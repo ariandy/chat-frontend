@@ -4,9 +4,9 @@ import {Icon, Button} from 'native-base'
 class CameraButton extends Component {
 	render(){
 		return(
-      <Button transparent>
-        <Icon type="FontAwesome5" name='camera-retro' />
-      </Button>
+			<Button transparent>
+				<Icon type="FontAwesome5" name='camera-retro' />
+			</Button>
 		)
 	}
 }

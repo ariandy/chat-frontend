@@ -21,32 +21,17 @@ class Login extends Component {
   }
 
   static navigationOptions ={header:null}
-
-  inaLanguage = () => {
-    this.setState({
-      buttonLogin : 'Masuk',
-      inputUser : 'Surel',
-      inputPass : 'Kata Sandi',
-    })
-  }
-
-  engLanguage = () => {
-    this.setState({
-      buttonLogin: 'Login',
-      inputUser: 'Username',
-      inputPass: 'Password',
-    })
-  }
   
   handleSubmit= () => {
-    axios.post(`${localhost.url}/auth/login`, {
+    axios.post(`${localhost.url}/api/auth/login`, {
       email: this.state.email,
       password: this.state.pass
     })
       .then( (response) => {
         let that=this
-        let token = response.data.data.token
-        console.log("ini token >>>>" + token);
+        let token = response.data.token
+        
+        console.log("The token right here >>>> " + token)
 
         if (token == null){
           alert.alert("Loginlah yang benar, Yang Mulia")
@@ -68,26 +53,27 @@ class Login extends Component {
     return (
       <Container>
         <Content>
-          <View style={{alignItems:"center", paddingTop:20}}>
-            <View style={{width:300, height:175, paddingTop:50}}>
-              <Form>
+          <View style={{alignItems:"center", paddingTop:270,}}>
+            <View style={{width:300, height:175,}}>
+              <Form style={{flex:1,alignItems:"center"}}>
 
-                <Item regular style={{borderColor:"transparent", borderWidth:0,}}>
+                <Item rounded>
                   <Input placeholder={this.state.inputUser}
-                    onChangeText={(email) =>{this.setState({email:email})}} style={{borderBottomWidth:1,}}
+                    onChangeText={(email) =>{this.setState({email:email})}}
+                    // style={{borderBottomWidth:1,}}
                     value={this.state.email}/>
                 </Item>
-                
-                <Item regular style={{borderColor:"transparent", borderWidth:0,}}>
+                <View style={{paddingTop:20}}/>
+                <Item rounded>
                   <Input
                     placeholder={this.state.inputPass}
                     // secureTextEntry={true}
-                    style={{borderBottomWidth:1}}
+                    // style={{borderBottomWidth:1}}
                     onChangeText={(pass) =>{this.setState({pass:pass})}} 
                     value={this.state.pass}
                   />
                 </Item>
-                
+                <View style={{paddingTop:10}}/>
                 <Button
                   block
                   style={{alignContent:"center", marginTop:10 }}

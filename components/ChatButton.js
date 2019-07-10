@@ -5,8 +5,8 @@ class ChatButton extends Component {
 	render(){
 		return(
 			<Button transparent>
-        <Icon type="FontAwesome5" name='comment-dots' />
-      </Button>
+				<Icon type="FontAwesome5" name='comment-dots' />
+			</Button>
 		)
 	}
 }
